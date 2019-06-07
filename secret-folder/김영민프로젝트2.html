@@ -3,9 +3,14 @@
     <head>
         <meta charset="utf-8">
     <title>Open Source Design</title>
-  <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.3.min.js"></script>
-  <script type="text/javascript" src="https://leeky-courses.github.io/webclient-2019-01-kimyoungmin101/secret-folder/jquery_slide.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
+$(document).ready(function() {
+  $("#flip").click(function() {
+    $("#panel").slideToggle(3000);
+  });
+});
+
 function load() {
 	var select = document.getElementById("site");
 	window.location=select.options[select.selectedIndex].value;
@@ -26,13 +31,6 @@ function changeimg(img){
 	next++; // 다음 이미지 인덱스
 	next %= imgs.length; // 개수를 넘으면 처음으로
 }
-
-
-function hideMenu() {
-	alert("오른쪽 클릭<컨텍스트 메뉴>금지");
-	return false;
-} //  oncontextmenu로 소스 보기나 이미지 다운로드 금지 (오른쪽 마우스 클릭 금지)
-document.oncontextmenu=hideMenu;
 
 function f(e) { // e는 현재 발생한 이벤트 객체
 	alert("돋보기를 클릭하셨습니다."); // 이벤트 종류 출력
@@ -220,7 +218,7 @@ font-size : large;
         <input type="text" class="form-text">
         <button onclick="f(event)"><input type="button" class="img-button"></button>
       </p></li>
-            <li><a href = "https://opensrcdesign.com/signin">로그인</a></li> 
+            <li><a href = "https://leeky-courses.github.io/webclient-2019-01-kimyoungmin101/secret-folder/%EB%A1%9C%EA%B7%B8%EC%9D%B8.html">로그인</a></li> 
             <li><a href = "https://opensrcdesign.com/signup">회원가입</a></li> 
         </ul>
         </nav>
