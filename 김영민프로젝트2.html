@@ -1,0 +1,329 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    <title>Open Source Design</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.3.min.js"></script>
+  <script type="text/javascript" src="jquery_slide.js"></script>
+<script>
+function load() {
+	var select = document.getElementById("site");
+	window.location=select.options[select.selectedIndex].value;
+} //locatio 객체로 웹 사이트 접속
+
+var files = [
+"https://postfiles.pstatic.net/MjAxOTA2MDZfMjIz/MDAxNTU5NzkzMDI1MjYz.r9Gb42iF5ohxFLYQ4cvHyhYxt-AjMnAFKF-o4WAwMfgg.DCpCuqNOCxbX9tx3i7YaiTmJTXzQ5LEy2HZA8Swtk4og.JPEG.dudals2467/design_bg_f378e59d.jpg?type=w773",
+"https://postfiles.pstatic.net/MjAxOTA2MDZfMTk0/MDAxNTU5NzkzMDI1MjA0.FSiWaBPtZRBk062NLYL4icVlrdIz_IMT5Y0a8_wxbkcg.QfBvb9nQDRtKu4vNwNPr5qUGubQNHT7l53Cy621uoXAg.JPEG.dudals2467/easy_bg2_3afbeb16.jpg?type=w773",
+"https://postfiles.pstatic.net/MjAxOTA2MDZfMjMw/MDAxNTU5NzkzMDI1MjI2.dkh3HMc9yYi8NbJ0wKE3t7Shakyv2g-as6KiRKoJvy0g.QXyQ5xOGNXlDWkq8UhjfYcHr10uJ86tmEh73CjiS6MQg.JPEG.dudals2467/together_bg_d0728400(1).jpg?type=w773"];
+var imgs = new Array();
+for(var i=0; i<files.length; i++) {
+	imgs[i] = new Image(); // 이미지 객체 생성
+	imgs[i].src = files[i]; // 이미지 미리 로딩
+}
+var next = 1;
+function changeimg(img){
+	img.src = imgs[next].src; // 이미지 변경
+	next++; // 다음 이미지 인덱스
+	next %= imgs.length; // 개수를 넘으면 처음으로
+}
+
+
+function hideMenu() {
+	alert("오른쪽 클릭<컨텍스트 메뉴>금지");
+	return false;
+} //  oncontextmenu로 소스 보기나 이미지 다운로드 금지 (오른쪽 마우스 클릭 금지)
+document.oncontextmenu=hideMenu;
+
+function f(e) { // e는 현재 발생한 이벤트 객체
+	alert("돋보기를 클릭하셨습니다."); // 이벤트 종류 출력
+} // 이벤트 리스너에서 이밴트 객체 전달(돋보기를 누르면 내용출력
+function change() {
+	var p = document.getElementById("firstP");
+	p.innerHTML= "<br><br>환영 합니다";
+} // 추천 디자인을 누를시 환영 합니다 라는 문구로 교체 된다. innerHTML이용 8-03
+</script>
+<style>
+    #panel, #flip {
+      padding: 5px;
+      text-align: center;
+      background-color: white;
+      border: solid 2px black;
+    }
+    #panel {
+      padding: 50px;
+      display: none;
+    }
+    .box{
+        background : red;
+        color : white;
+        width : 70px;
+        height : 80px;
+        text-align: left;
+        margin-left : 100px;
+        margin-right : 100px;
+    }
+.layer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 20%)
+}
+    .layer2{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 135%)
+    }
+  .my-hr1 {
+    border: 0;
+    height: 1px;
+    background: #ccc;
+  }
+    .box2 {
+  display: inline-block;
+  width: 170px;
+  height: 250px;
+  margin: 1em;
+  padding : 1em;
+  padding-top : 0;
+}
+    h{
+        text-align: center;
+        font-size : 50px;
+    }
+
+    div1{
+        color : black;
+        text-align: left;
+    }
+    div2{
+        text-align: center;
+        font-size : 30px;
+    }
+    div3{
+        background : white;
+        text-align : left;
+        border: none;
+        font-size : 13px;
+        width : 10px;
+    }
+    #q{color : black}
+      input {
+        vertical-align: middle;
+      }
+      input.form-text {
+        border: 1px solid #bcbcbc;
+        height: 28px;
+        border-radius : 50px
+    }
+        input.img-button {
+        background: url( "https://www.codingfactory.net/wp-content/uploads/button_search.png" ) no-repeat;
+        border: none;
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+      }    
+#footer {
+   position:fixed;
+   left:0px;
+   bottom:-20px;
+   height:60px;
+   width:100%;
+
+}
+    span0{
+        background : red;
+        width : 200px;
+        padding : 10px;
+        color : white;
+        margin-right : 100px
+    }
+    span1{
+        width : 200px;
+        padding : 20px;
+        color : white;
+        margin-right : 100px
+}
+    #a{margin-right : 400px}
+    #round1 {border-radius : 50px}
+    #round2 {border-radius : 0px}
+.navbar1 {
+  background: black;
+  margin: 0; padding: 0;
+  list-style: none;
+  position: fixed;
+  width: 100%;
+}
+.navbar1>li {
+  display: inline-block;
+}
+.navbar1>li>a {
+  display: block;
+  text-decoration: none;
+  padding: 10px 20px;
+  color: white;
+}
+.nav {
+  z-index: 2;
+  top : -20px;
+  height : 90px;
+  position: fixed;
+  background-color: white; 
+  list-style-type: none;
+  text-align: center;
+  width : 100%;
+  margin: 0;
+  padding: 0;
+}
+.nav li {
+  display: inline-block;
+  font-size: 17px;
+  padding: 15px;
+}
+img.relative{
+position : relative;
+top: 60px;
+z-index: 1;
+}
+            ul{
+                list-style-type: none;
+                margin : 0;
+                padding : 0;
+                overflow : hidden;
+                background-color : #FFFFFF;
+            }
+            li{
+                display : inline;
+            }
+            li a{
+                display : inline-block;
+                color : black;
+                text-align: center;
+                text-decoration : none;
+    }
+    </head>
+body {
+font-family : "Times New Roman", Serif;
+font-size : large;
+}
+        </style>
+<body bgcolor="#F5F5F5">
+    <header>
+    <nav>
+        <ul class="nav">
+            <li><a href="https://opensrcdesign.com/n" style="text-decoration:none"><div class = "box"><strong>OPEN<br><span style = "color : black">DESIGN</span><br></strong></div></a></li>
+            <li><a href="https://opensrcdesign.com/design" style="text-decoration:none">디자인</a></li>
+            <li><a href="https://opensrcdesign.com/group" style="text-decoration:none">그룹</a></li>
+            <li><a href = "https://opensrcdesign.com/designer">디자이너</a></li> 
+            <li><span0 id = "round1" color : white;>디자인등록</span0></li>
+            <li><p> 
+        <input type="text" class="form-text">
+        <button onclick="f(event)"><input type="button" class="img-button"></button>
+      </p></li>
+            <li><a href = "https://opensrcdesign.com/signin">로그인</a></li> 
+            <li><a href = "https://opensrcdesign.com/signup">회원가입</a></li> 
+        </ul>
+        </nav>
+    </header>
+<section>
+    <article>
+<img src=  "https://postfiles.pstatic.net/MjAxOTA2MDZfMjIz/MDAxNTU5NzkzMDI1MjYz.r9Gb42iF5ohxFLYQ4cvHyhYxt-AjMnAFKF-o4WAwMfgg.DCpCuqNOCxbX9tx3i7YaiTmJTXzQ5LEy2HZA8Swtk4og.JPEG.dudals2467/design_bg_f378e59d.jpg?type=w773" class = "relative" width="100%" height="300" alt="open" onclick = "changeimg(this)" >
+        </article>
+    <article>
+        <div2 style="text-align:center"><p id = "firstP" onclick ="change()"><strong><br><br>추천 디자인</strong></p></div2>
+    </article>
+    <article style="text-align:center">
+        <div3 class = "box2"><p id="firstP"onclick="imagechange()"><img src = https://postfiles.pstatic.net/MjAxOTA1MDlfMjM0/MDAxNTU3NDExNTM5Mzgy.lPVw0xyxGc4f7H4ZZsE8mPHFJE0v0-scPyhjbYBo-B8g.P6ZttFWbB-SasJMudHtaJbc7NGNiLTCjl1m6jhtqYnEg.PNG.dudals2467/1.png?type=w773 width = "170" height = "140" position : "center"><strong>오픈소스디자인 플랫폼...</strong><br>동님님의 프로젝트<br><pre><span style="color:red">새분야            <span style="color:black">5달전</span></pre><hr class="my-hr1"><pre>◎1.4k  ♥8  ‡0</pre></p></div3> 
+
+        <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/3799c663-8317-493e-933b-3389daba4753-x200.jpg width = "170" height = "140" position : "center"><strong>모듈형 커스터마이징 시스...</strong><br>국민대CRC님의 프로젝트<br><pre><span style="color:red">패션모듈            <span style="color:black">6달전</span></pre><hr class="my-hr1">
+<pre>◎358  ♥3  ‡0</pre></div3> 
+
+        <div3 class = "box2"><img src =https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/ee6fc92d-941e-4750-9b05-025a44f56af5.jpeg width = "170" height = "140" position : "center"><strong>남자 패션/슈즈 디자인</strong><br>쏭님의 작품<br><pre><span style="color:red">의상              <span style="color:black">1.7년전</span></pre><hr class="my-hr1"><pre>◎130  ♥0  ‡0</pre></div3>
+
+        <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/c6dd5980-49cb-49ba-9571-f970d7633ff2.jpeg width = "170" height = "140" position : "center"><strong>SIMPLE TATTOO DESI......</strong><br>AAAN님의 작품<br><pre><span style="color:red">패션              <span style="color:black">1.7년전</span></pre><hr class="my-hr1"><pre>◎131  ♥0  ‡0</pre></div3>
+
+        <div3 class = "box2"><img src = https://postfiles.pstatic.net/MjAxOTA1MDlfMjc5/MDAxNTU3NDExNTM5NDA2.ZLVEJVihp03_ZjbBx-PeAZtS5Fan272mCU1Ut0aFsa0g.mZb4WS0yU97gXt5QASuMaQ11_qWzamP3_IXGDrg_OsUg.PNG.dudals2467/5.png?type=w773 width = "170" height = "140" position : "center"><strong>androgyny</strong><br>코지님의 작품<br><pre><span style="color:red">의상              <span style="color:black">1.7년전</span></pre><hr class="my-hr1"><pre>◎164  ♥0  ‡0</pre></div3><br>  
+   
+        <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/0d4a1767-8763-4180-9f32-f8fd49ec10bc.jpg width = "170" height = "140" position : "center"><strong>sample portfollo</strong><br>준석님의 작품<br><pre><span style="color:red">패션              <span style="color:black">1.5년전</span></pre><hr class="my-hr1"><pre>◎105  ♥0  ‡0</pre></div3>
+
+         <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/83c4a7ae-f741-4b65-a930-a7cc90973689.jpg width = "170" height = "140" position : "center"><strong>4th protofolio</strong><br>박해리님의 작품<br><pre><span style="color:red">패션              <span style="color:black">1.5년전</span></pre><hr class="my-hr1"><pre>◎149  ♥0  ‡0</pre></div3>
+
+         <div3 class = "box2"><img src = https://postfiles.pstatic.net/MjAxOTA1MDlfMzAg/MDAxNTU3NDExNTM5NDA2.uof5NKzV98xX3K04msvwHd7tnXa27rRDw_WUb2qkxh8g.FKwLAoRMVTEv20WoYKj37EslK8vx_YQf1c5X4Pe1M14g.PNG.dudals2467/8.png?type=w773 width = "170" height = "140" position : "center"><strong>Interactive Smart Fashi...</strong><br>이현승님의 작품<br><pre><span style="color:red">스마트패션           <span style="color:black">1.3년전</span></pre><hr class="my-hr1"><pre>◎178  ♥2  ‡0</pre></div3>
+
+        <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/f1ed14e0-a945-43e8-98a7-225e8d61ab00.jpg width = "170" height = "140" position : "center"><strong>4th protofolio</strong><br>최혜림님의 작품<br><pre><span style="color:red">패션              <span style="color:black">1.5년전</span></pre><hr class="my-hr1"><pre>◎149  ♥0  ‡0</pre></div3>
+
+
+        <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/68355ec0-6f35-4049-86ee-9424484012af-x200.png width = "170" height = "140" position : "center"><strong>웨어러블 에너지 생산-...</strong><br>국민대CRC님의 프로젝트<br><pre><span style="color:red">스마트패션          <span style="color:black">1.4년전</span></pre><hr class="my-hr1"><pre>◎55  ♥1  ‡0</pre></div3><br>
+
+
+        <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/f1ed14e0-a945-43e8-98a7-225e8d61ab00.jpg width = "170" height = "140" position : "center"><strong>4th protofolio</strong><br>최혜림님의 작품<br><pre><span style="color:red">패션              <span style="color:black">1.5년전</span></pre><hr class="my-hr1"><pre>◎149  ♥0  ‡0</pre></div3>
+
+        <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/ffb28d65-7e7c-4e11-932e-6e076c77afc9.png width = "170" height = "140" position : "center"><strong>PORTFOLIO:PHOTOGR...</strong><br>이소원님의 프로젝트<br><pre><span style="color:red">의상            <span style="color:black">1.4년전</span></pre><hr class="my-hr1"><pre>◎101 ♥0  ‡0</pre></div3>
+
+        <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/6d719934-f85c-409e-b5ad-455b7444a3ae.jpg width = "170" height = "140" position : "center"><strong>fashion illustration</strong><br>고가령님의 작품<br><pre><span style="color:red">의상            <span style="color:black">1.4년전</span></pre><hr class="my-hr1"><pre>◎139 ♥0  ‡0</pre></div3>
+
+        <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/affea712-7dbd-4939-8d3c-8a1f0c6974fc-x200.png width = "170" height = "140" position : "center"><strong>패셔놀로지 1</strong><br>국민대CRC님의 프로젝트<br><pre><span style="color:red">스마트패션        <span style="color:black">1.4년전</span></pre><hr class="my-hr1"><pre>◎34 ♥0  ‡0</pre></div3>
+
+        <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/be15e791-ec26-4392-a165-848f80283e98.JPG width = "170" height = "140" position : "center"><strong>패션드로잉 2</strong><br>박하늘님의 프로젝트<br><pre><span style="color:red">의상            <span style="color:black">1.4년전</span></pre><hr class="my-hr1"><pre>◎24 ♥0  ‡0</pre></div3><br>
+
+        <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/29ff7b8b-5058-4636-8ccb-9bd6c46e2d6e-x200.png width = "170" height = "140" position : "center"><strong>Wearable Energy Har....</strong><br>민경식님의 프로젝트<br><pre><span style="color:red">액세서리            <span style="color:black">1.4년전</span></pre><hr class="my-hr1"><pre>◎80 ♥0  ‡0</pre></div3>
+
+        <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/f7ccc542-4860-4f7a-bd3a-3e9abdcb53f5.jpg width = "170" height = "140" position : "center"><strong>Tie a Knot</strong><br>임예슬님의 프로젝트<br><pre><span style="color:red">의상            <span style="color:black">1.4년전</span></pre><hr class="my-hr1"><pre>◎144 ♥0  ‡0</pre></div3>
+
+        <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/53e8e028-61c0-4c21-9d81-eca71f6eb15e-x200.png width = "170" height = "140" position : "center"><strong>PORTFOLIO:PHOTOGR...</strong><br>국민대CRC님의 프로젝트<br><pre><span style="color:red">스마트패션       <span style="color:black">1.4년전</span></pre><hr class="my-hr1"><pre>◎98 ♥0  ‡0</pre></div3>
+
+        <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/4584a770-5a3b-499a-84be-9fc3c779302d-x200.png width = "170" height = "140" position : "center"><strong>Visual -MIMO</strong><br>국민대CRC님의 프로젝트<br><pre><span style="color:red">스마트패션      <span style="color:black">1.4년전</span></pre><hr class="my-hr1"><pre>◎138 ♥0  ‡0</pre></div3>
+
+        <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/ebedb946-fee1-452b-8c13-a2adeee0d1b6.jpg width = "170" height = "140" position : "center"><strong>art shoes/ tie-dye</strong><br>최지민님의 프로젝트<br><pre><span style="color:red">패션            <span style="color:black">1.4년전</span></pre><hr class="my-hr1"><pre>◎95 ♥0  ‡0</pre></div3><br>
+
+        <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/d0615a74-1665-4393-984b-9cdc75c41216.jpg width = "170" height = "140" position : "center"><strong>PORTFOLIO 1 : JK DESIGN</strong><br>박은영님의 프로젝트<br><pre><span style="color:red">패션            <span style="color:black">1.4년전</span></pre><hr class="my-hr1"><pre>◎117 ♥0  ‡0</pre></div3>
+
+        <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/164e6f58-cae7-4a30-8f3d-1595869ea617.jpg width = "170" height = "140" position : "center"><strong>fashion drawing</strong><br>이가영님의 프로젝트<br><pre><span style="color:red">의상            <span style="color:black">1.4년전</span></pre><hr class="my-hr1"><pre>◎31 ♥0  ‡0</pre></div3>
+
+        <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/2475f712-fa92-478f-b82c-6d74164b2303.JPG width = "170" height = "140" position : "center"><strong>PORTFOLIO:PHOTOGR...</strong><br>이준미님의 프로젝트<br><pre><span style="color:red">의상            <span style="color:black">1.4년전</span></pre><hr class="my-hr1"><pre>◎142 ♥0  ‡0</pre></div3>
+
+        <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/e279b10b-10c4-476c-a1bc-e9c762c3c81b.jpg width = "170" height = "140" position : "center"><strong>Beaut Clatante</strong><br>이혜인님의 프로젝트<br><pre><span style="color:red">의상            <span style="color:black">1.4년전</span></pre><hr class="my-hr1"><pre>◎67 ♥0  ‡0</pre></div3>
+
+        <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/b04305f2-1095-4109-92b8-f2cc77c80c63.jpg width = "170" height = "140" position : "center"><strong>PORTFOLIO:PHOTOGR...</strong><br>김희님의 프로젝트<br><pre><span style="color:red">패션            <span style="color:black">1.4년전</span></pre><hr class="my-hr1"><pre>◎62 ♥0  ‡0</pre></div3><br>
+
+        <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/a9e7f776-e5d6-450f-be11-3b90a9444b24.jpg width = "170" height = "140" position : "center"><strong>GLOW-gergous ladi....</strong><br>조하민님의 프로젝트<br><pre><span style="color:red">의상            <span style="color:black">1.4년전</span></pre><hr class="my-hr1"><pre>◎103 ♥0  ‡0</pre></div3>
+
+        <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/def78f52-193a-4c6b-9609-43fe2c589ed2.jpg width = "170" height = "140" position : "center"><strong>fashion illustration</strong><br>chxxjimin님의 프로젝트<br><pre><span style="color:red">의상            <span style="color:black">1.4년전</span></pre><hr class="my-hr1"><pre>◎36 ♥0  ‡0</pre></div3>
+
+        <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/7689bba2-983e-47e9-9ad3-f87810bd1d8a-x200.png width = "170" height = "140" position : "center"><strong>3D 프린팅 스마트 패션 ......</strong><br>국민대CRC님의 프로젝트<br><pre><span style="color:red">스마트패션        <span style="color:black">1.4년전</span></pre><hr class="my-hr1"><pre>◎132 ♥0  ‡0</pre></div3>
+
+        <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/a5339d31-49f7-488d-b01a-09c00dae82a9-x200.jpg width = "170" height = "140" position : "center"><strong>Zodiac Coat</strong><br>한광수님의 프로젝트<br><pre><span style="color:red">스마트패션       <span style="color:black">8달전</span></pre><hr class="my-hr1"><pre>◎154 ♥0  ‡0</pre></div3>
+
+        <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/ec268fc9-185f-4fe6-8d52-c7c8bb32d907.jpg width = "170" height = "140" position : "center"><strong>PORTFOLIO:PHOTOGR...</strong><br>임현주님의 프로젝트<br><pre><span style="color:red">액서사리         <span style="color:black">1.4년전</span></pre><hr class="my-hr1"><pre>◎266 ♥0  ‡0</pre></div3><br>
+
+<br><br>
+
+    </article>
+        </section>
+<div id="footer">
+<ul class="navbar1">
+  <li><p onmouseover="this.style.backgroundColor='orchid'"
+   onmouseout="this.style.backgroundColor='black'"><span1 id = "a"> 
+copyright @ 2019 Open Design Inc.</span1></li> 
+  <li><a href="https://opensrcdesign.com/Info/info">사이트 소개</a></li>
+  <li><a href="https://opensrcdesign.com/Term/term">이용 약관</a></li> 
+  <li><a href="https://opensrcdesign.com/Privacy/privacy">개인정보보호정책</a></li> 
+</ul>
+    </div>
+<hr>
+
+<br>
+  <div id="flip">추가 필요 사항</div>
+  <div id="panel">
+오픈소스디자인 사이트 프린트 →
+<input type="button" value="프린트" onclick="window.print()"><br><hr><br>
+사이트 선택 : 
+<select id="site">
+	<option value="https://opensrcdesign.com/design" selected>디자인
+	<option value="https://opensrcdesign.com/group">그룹
+	<option value="https://opensrcdesign.com/designer">디자이너
+</select><br>
+<br><button onclick="load()">웹 사이트 접속</button></div>
+<br><br>
+</body>
+</html>
