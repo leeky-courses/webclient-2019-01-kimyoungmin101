@@ -3,7 +3,65 @@
     <head>
         <meta charset="utf-8">
     <title>Open Source Design</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.3.min.js"></script>
+  <script type="text/javascript" src="jquery_slide.js"></script>
+<script>
+function load() {
+	var select = document.getElementById("site");
+	window.location=select.options[select.selectedIndex].value;
+} //locatio 객체로 웹 사이트 접속
+
+var files = [
+"https://postfiles.pstatic.net/MjAxOTA2MDZfMjIz/MDAxNTU5NzkzMDI1MjYz.r9Gb42iF5ohxFLYQ4cvHyhYxt-AjMnAFKF-o4WAwMfgg.DCpCuqNOCxbX9tx3i7YaiTmJTXzQ5LEy2HZA8Swtk4og.JPEG.dudals2467/design_bg_f378e59d.jpg?type=w773",
+"https://postfiles.pstatic.net/MjAxOTA2MDZfMTk0/MDAxNTU5NzkzMDI1MjA0.FSiWaBPtZRBk062NLYL4icVlrdIz_IMT5Y0a8_wxbkcg.QfBvb9nQDRtKu4vNwNPr5qUGubQNHT7l53Cy621uoXAg.JPEG.dudals2467/easy_bg2_3afbeb16.jpg?type=w773",
+"https://postfiles.pstatic.net/MjAxOTA2MDZfMjMw/MDAxNTU5NzkzMDI1MjI2.dkh3HMc9yYi8NbJ0wKE3t7Shakyv2g-as6KiRKoJvy0g.QXyQ5xOGNXlDWkq8UhjfYcHr10uJ86tmEh73CjiS6MQg.JPEG.dudals2467/together_bg_d0728400(1).jpg?type=w773"];
+var imgs = new Array();
+for(var i=0; i<files.length; i++) {
+	imgs[i] = new Image(); // 이미지 객체 생성
+	imgs[i].src = files[i]; // 이미지 미리 로딩
+}
+var next = 1;
+function changeimg(img){
+	img.src = imgs[next].src; // 이미지 변경
+	next++; // 다음 이미지 인덱스
+	next %= imgs.length; // 개수를 넘으면 처음으로
+}
+
+
+function hideMenu() {
+	alert("오른쪽 클릭<컨텍스트 메뉴>금지");
+	return false;
+} //  oncontextmenu로 소스 보기나 이미지 다운로드 금지 (오른쪽 마우스 클릭 금지)
+document.oncontextmenu=hideMenu;
+
+function f(e) { // e는 현재 발생한 이벤트 객체
+	alert("돋보기를 클릭하셨습니다."); // 이벤트 종류 출력
+} // 이벤트 리스너에서 이밴트 객체 전달(돋보기를 누르면 내용출력
+function change() {
+	var p = document.getElementById("firstP");
+	p.innerHTML= "<br><br>환영 합니다";
+} // 추천 디자인을 누를시 환영 합니다 라는 문구로 교체 된다. innerHTML이용 8-03
+</script>
 <style>
+    #panel, #flip {
+      padding: 5px;
+      text-align: center;
+      background-color: white;
+      border: solid 2px black;
+    }
+    #panel {
+      padding: 50px;
+      display: none;
+    }
+    .box{
+        background : red;
+        color : white;
+        width : 70px;
+        height : 80px;
+        text-align: left;
+        margin-left : 100px;
+        margin-right : 100px;
+    }
 .layer {
   position: absolute;
   top: 50%;
@@ -24,7 +82,7 @@
     .box2 {
   display: inline-block;
   width: 170px;
-  height: 230px;
+  height: 250px;
   margin: 1em;
   padding : 1em;
   padding-top : 0;
@@ -33,14 +91,7 @@
         text-align: center;
         font-size : 50px;
     }
-    div{
-        background : red;
-        color : white;
-        width : 70px;
-        height : 80px;
-        text-align: left;
-margin-right : 100px
-    }
+
     div1{
         color : black;
         text-align: left;
@@ -150,41 +201,39 @@ z-index: 1;
                 text-align: center;
                 text-decoration : none;
     }
+    </head>
 body {
 font-family : "Times New Roman", Serif;
 font-size : large;
 }
         </style>
-    </head>
-
 <body bgcolor="#F5F5F5">
     <header>
     <nav>
         <ul class="nav">
-            <li><div><strong><br>OPEN <br><div1>DESIGN</div1></strong></div></li>
-            <li><a href = "#디자인">디자인</a></li>
-            <li><a herf = "#그룹">그룹</a></li>
-            <li><a herf = "#디자이너">디자이너</a></li>
+            <li><a href="https://opensrcdesign.com/n" style="text-decoration:none"><div class = "box"><strong>OPEN<br><span style = "color : black">DESIGN</span><br></strong></div></a></li>
+            <li><a href="https://opensrcdesign.com/design" style="text-decoration:none">디자인</a></li>
+            <li><a href="https://opensrcdesign.com/group" style="text-decoration:none">그룹</a></li>
+            <li><a href = "https://opensrcdesign.com/designer">디자이너</a></li> 
             <li><span0 id = "round1" color : white;>디자인등록</span0></li>
-            <li><p>
+            <li><p> 
         <input type="text" class="form-text">
-        <input type="button" class="img-button">
+        <button onclick="f(event)"><input type="button" class="img-button"></button>
       </p></li>
-            <li><a herf = "#로그인">로그인</a></li>
-            <li><a herf = "#회원가입">회원가입</a></li>
+            <li><a href = "https://opensrcdesign.com/signin">로그인</a></li> 
+            <li><a href = "https://opensrcdesign.com/signup">회원가입</a></li> 
         </ul>
         </nav>
     </header>
 <section>
     <article>
-<img src="https://postfiles.pstatic.net/MjAxOTA1MDdfMjI2/MDAxNTU3MjA5NDQ5NTI3.7myIQe38slBSw5yIu6jTxckyvIEF8mmh56ZS9DY76yYg.p_OZZaaf8AwJ7lTXqQOFKlL35JrdO7RlCDz0WzdjA5Qg.JPEG.dudals2467/오픈_디자인.jpg?type=w773" class = "relative" width="100%" height="100%" alt="open"> 
+<img src=  "https://postfiles.pstatic.net/MjAxOTA2MDZfMjIz/MDAxNTU5NzkzMDI1MjYz.r9Gb42iF5ohxFLYQ4cvHyhYxt-AjMnAFKF-o4WAwMfgg.DCpCuqNOCxbX9tx3i7YaiTmJTXzQ5LEy2HZA8Swtk4og.JPEG.dudals2467/design_bg_f378e59d.jpg?type=w773" class = "relative" width="100%" height="300" alt="open" onclick = "changeimg(this)" >
         </article>
     <article>
-        <div2 style="text-align:center"><p><strong><br><br>추천 디자인</strong></p></div2>
+        <div2 style="text-align:center"><p id = "firstP" onclick ="change()"><strong><br><br>추천 디자인</strong></p></div2>
     </article>
     <article style="text-align:center">
-
-        <div3 class = "box2"><img src = https://postfiles.pstatic.net/MjAxOTA1MDlfMjM0/MDAxNTU3NDExNTM5Mzgy.lPVw0xyxGc4f7H4ZZsE8mPHFJE0v0-scPyhjbYBo-B8g.P6ZttFWbB-SasJMudHtaJbc7NGNiLTCjl1m6jhtqYnEg.PNG.dudals2467/1.png?type=w773 width = "170" height = "140" position : "center"><strong>오픈소스디자인 플랫폼...</strong><br>동님님의 프로젝트<br><pre><span style="color:red">새분야            <span style="color:black">5달전</span></pre><hr class="my-hr1"><pre>◎1.4k  ♥8  ‡0</pre></div3> 
+        <div3 class = "box2"><p id="firstP"onclick="imagechange()"><img src = https://postfiles.pstatic.net/MjAxOTA1MDlfMjM0/MDAxNTU3NDExNTM5Mzgy.lPVw0xyxGc4f7H4ZZsE8mPHFJE0v0-scPyhjbYBo-B8g.P6ZttFWbB-SasJMudHtaJbc7NGNiLTCjl1m6jhtqYnEg.PNG.dudals2467/1.png?type=w773 width = "170" height = "140" position : "center"><strong>오픈소스디자인 플랫폼...</strong><br>동님님의 프로젝트<br><pre><span style="color:red">새분야            <span style="color:black">5달전</span></pre><hr class="my-hr1"><pre>◎1.4k  ♥8  ‡0</pre></p></div3> 
 
         <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/3799c663-8317-493e-933b-3389daba4753-x200.jpg width = "170" height = "140" position : "center"><strong>모듈형 커스터마이징 시스...</strong><br>국민대CRC님의 프로젝트<br><pre><span style="color:red">패션모듈            <span style="color:black">6달전</span></pre><hr class="my-hr1">
 <pre>◎358  ♥3  ‡0</pre></div3> 
@@ -247,17 +296,34 @@ font-size : large;
 
         <div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/ec268fc9-185f-4fe6-8d52-c7c8bb32d907.jpg width = "170" height = "140" position : "center"><strong>PORTFOLIO:PHOTOGR...</strong><br>임현주님의 프로젝트<br><pre><span style="color:red">액서사리         <span style="color:black">1.4년전</span></pre><hr class="my-hr1"><pre>◎266 ♥0  ‡0</pre></div3><br>
 
-<div3 class = "box2"><img src = https://s3.ap-northeast-2.amazonaws.com/osd.uploads.com/uploads/876648d3-22ba-4cf3-9141-bcc6eb52e5cc.jpg width = "170" height = "140" position : "center"><strong>from a straight - to a curve</strong><br>이진경님의 프로젝트<br><pre><span style="color:red">액서사리         <span style="color:black">1.4년전</span></pre><hr class="my-hr1"><pre>◎13 ♥0  ‡0</pre></div3>
+<br><br>
 
     </article>
         </section>
 <div id="footer">
 <ul class="navbar1">
-  <li><span1 id = "a">copyright @ 2019 Open Design Inc.</span1></li>
-  <li><a href="#">사이트 소개</a></li>
-  <li><a href="#">이용 약관</a></li> 
-  <li><a href="#">개인정보보호정책</a></li> 
+  <li><p onmouseover="this.style.backgroundColor='orchid'"
+   onmouseout="this.style.backgroundColor='black'"><span1 id = "a"> 
+copyright @ 2019 Open Design Inc.</span1></li> 
+  <li><a href="https://opensrcdesign.com/Info/info">사이트 소개</a></li>
+  <li><a href="https://opensrcdesign.com/Term/term">이용 약관</a></li> 
+  <li><a href="https://opensrcdesign.com/Privacy/privacy">개인정보보호정책</a></li> 
 </ul>
     </div>
+<hr>
+
+<br>
+  <div id="flip">추가 필요 사항</div>
+  <div id="panel">
+오픈소스디자인 사이트 프린트 →
+<input type="button" value="프린트" onclick="window.print()"><br><hr><br>
+사이트 선택 : 
+<select id="site">
+	<option value="https://opensrcdesign.com/design" selected>디자인
+	<option value="https://opensrcdesign.com/group">그룹
+	<option value="https://opensrcdesign.com/designer">디자이너
+</select><br>
+<br><button onclick="load()">웹 사이트 접속</button></div>
+<br><br>
 </body>
 </html>
