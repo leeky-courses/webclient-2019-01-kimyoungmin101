@@ -2,21 +2,36 @@
 <html>
 <head>
   <title>Login</title>
-  <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.3.min.js"></script>
-  <script type="text/javascript" src="json.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('#serialize').click(function() {
+    person = new Object();
+    person.ID = $('#ID').val();
+    person.PASSWORD = $('#PASSWORD').val();
+    var jsonString = JSON.stringify(person);
+    $('#raw-json').val(jsonString);
+  });
 
+  $('#deserialize').click(function() {
+    var jsonString = $('#raw-json').val();
+    person = JSON.parse(jsonString);
+    $('#ID').val(person["ID"]);
+    $('#PASSWORD').val(person.lastName);
+  });
+});
+</script>
   <style>
   </style>
 </head>
 <body>
   <h3>오픈소스 디자인 로그인</h3>
-  <div>ID : <input type="text" id="first-name" /></div>
-  <div>PASSWORD : <input type="text" id="last-name" /></div>
+  <div>ID : <input type="text" id="ID" /></div>
+  <div>PASSWORD : <input type="text" id="PASSWORD" /></div>
   <div><button type="button" id="serialize">아이디, 비밀번호 확인</button></div>
   <div>확인창</div>
   <div><textarea type="text" id="raw-json" rows="6" cols="40"></textarea></div>
-  <div><input type = "button" value = "로그인" onclick = "location.href='www.naver.com'">
-
+  <button onclick="location.href='https://leeky-courses.github.io/webclient-2019-01-kimyoungmin101/secret-folder/%EA%B9%80%EC%98%81%EB%AF%BC%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82.html'">로그인</button>
 
 </body>
 </html>
